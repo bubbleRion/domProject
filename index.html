@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root">
+    <ul>li</ul>
+
+  </div>
+  <script type="module">
+    const root = document.getElementById("root");
+
+    root.style.width = "100px"
+    root.style.height = "100px"
+    root.style.backgroundColor = "cadetblue"
+    console.dir(root.style)
+
+    const dom = []
+    // dom.push(`<div id="test-1">피카츄</div>`)
+    // dom.push(`<div id="test-2">디지몬</div>`)
+    // dom.push(`<div id="test-3">아구몬</div>`)
+    // dom.push(`<div id="test-4">파이리</div>`)
+    // dom.push(`<div id="test-5">꼬부기</div>`)
+    const ul = []
+    function auto(count, tagName, attri, attriValue, text) {
+      for (let i = 0; i < count; i++) {
+        dom.push(`<${tagName} ${attri}="${attriValue}-${i + 1}">${text}</${tagName}>`)
+      }
+      root.innerHTML = dom.join("")
+    }
+
+
+    function ulLi(count, mainTag) {
+      ul.push(`<${mainTag}>`)
+      for (let i = 0; i < count; i++) {
+        ul.push(`<li onClick = "this.style.color = 'red'" style="color : pink;">item-${i + 1}</li>`)
+      }
+      ul.push(`</${mainTag}>`)
+      root.innerHTML = ul.join("")
+    }
+    // auto(10, "nav", "id", "test", "안녕해")
+    ulLi(5, "ul")
+    console.log(dom)
+
+  </script>
+</body>
+
+</html>
